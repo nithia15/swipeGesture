@@ -1,0 +1,23 @@
+    <div class="tphoto"
+      [@cardAnimator]="animationState"
+      (@cardAnimator.done)="resetAnimationState($event)"
+      (swipeleft)='startAnimation("swipeleft")' 
+      (swiperight)='startAnimation("swiperight")'
+    >
+      <img [src]="users[index].picture" title="tphoto" alt="Tinder Photo" />
+      <div class="tname">{{users[index].name}}, <span class="age">{{users[index].age}}</span></div>
+      <div *ngIf="!profileSelected" class="action-buttons">
+        <span>
+        <button (click)="onProfileSelected()">Yes</button>
+        <button (click)="onProfileRejected()">No</button>
+      </span>
+      </div>
+      <div *ngIf="profileSelected">
+        <span>
+          {{users[index].details}}
+        </span>
+      </div>
+
+    </div>
+
+    
