@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { trigger, keyframes, animate, transition } from "@angular/animations";
 import * as kf from './keyframes';
 import { User } from './user'
@@ -24,6 +24,7 @@ export class CardComponent {
   public index = 0;
   @Input()
   parentSubject: Subject<any>;
+  @Output() hideActionIcons = new EventEmitter();
   initialLoad = true;
   profileSelected = false;
   addDetails: any;
@@ -46,8 +47,10 @@ export class CardComponent {
       this.animationState = state;
     }
     if (state === 'swipeleft') {
+      this.hideActionIcons.emit('true');
       alert('Not Interested')
     } else {
+      this.hideActionIcons.emit('true');
       alert('Interested')
     }
   }
@@ -64,6 +67,7 @@ export class CardComponent {
 
   onProfileSelected() {
     this.profileSelected = true;
+    this.hideActionIcons.emit('false');
   }
 
   onProfileRejected() {
