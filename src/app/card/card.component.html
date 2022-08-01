@@ -4,7 +4,7 @@
       (swipeleft)='startAnimation("swipeleft")' 
       (swiperight)='startAnimation("swiperight")'
     >
-      <img [src]="users[index].picture" title="tphoto" alt="Tinder Photo" />
+      <img [src]="users[index].picture" title="tphoto" alt="Tinder Photo" (click)="onProfileSelected()" />
       <div class="tname">{{users[index].name}}, <span class="age">{{users[index].age}}</span></div>
       <div *ngIf="!profileSelected" class="action-buttons">
         <span>
