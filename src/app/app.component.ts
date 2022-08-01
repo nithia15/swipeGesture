@@ -8,6 +8,7 @@ import { Subject} from 'rxjs';
 })
 export class AppComponent {
   parentSubject:Subject<string> = new Subject();
+  showIcons = false;
 
   constructor() {
 
@@ -19,6 +20,10 @@ export class AppComponent {
 
   profileShortListed() {
     alert('Shortlisted');
+  }
+
+  hideActionIcons(event) {
+    this.showIcons = (event == "true") ? false : true;
   }
 
 }
